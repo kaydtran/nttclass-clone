@@ -281,7 +281,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="text-slate-700 mb-8 italic relative z-10 leading-relaxed">
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xl">

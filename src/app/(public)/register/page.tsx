@@ -270,7 +270,7 @@ export default function RegisterPage() {
                   )}
                 </button>
                 <p className="text-center text-sm text-slate-500 mt-4">
-                  Bằng cách nhấp vào "Gửi đăng ký học", bạn đồng ý với các điều khoản của trung tâm.
+                  Bằng cách nhấp vào &ldquo;Gửi đăng ký học&rdquo;, bạn đồng ý với các điều khoản của trung tâm.
                 </p>
               </div>
 
