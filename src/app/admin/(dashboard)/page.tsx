@@ -58,7 +58,7 @@ export default function AdminDashboard() {
                 {MOCK_STUDENTS.slice(0, 5).map((student) => (
                   <tr key={student.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4 font-medium text-slate-900">{student.name}</td>
-                    <td className="px-6 py-4 text-slate-600">Lớp {student.grade}</td>
+                    <td className="px-6 py-4 text-slate-600">-</td>
                     <td className="px-6 py-4 text-slate-500">Hôm nay</td>
                   </tr>
                 ))}

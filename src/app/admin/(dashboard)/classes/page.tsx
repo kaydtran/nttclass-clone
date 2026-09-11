@@ -61,8 +61,8 @@ export default function ClassesPage() {
                   </td>
                   <td className="px-6 py-4 text-slate-600">{item.subject}</td>
                   <td className="px-6 py-4 text-slate-600">{item.level}</td>
-                  <td className="px-6 py-4 text-slate-600">{formatCurrency(item.tuition)}/tháng</td>
-                  <td className="px-6 py-4 text-slate-600">{item.currentStudents}/{item.maxStudents}</td>
+                  <td className="px-6 py-4 text-slate-600">{formatCurrency(item.fee)}/tháng</td>
+                  <td className="px-6 py-4 text-slate-600">0/{item.maxStudents}</td>
                   <td className="px-6 py-4">
                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${item.status === 'active' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-700'}`}>
                       {item.status === 'active' ? 'Đang hoạt động' : 'Đã đóng'}

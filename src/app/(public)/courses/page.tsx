@@ -92,7 +92,7 @@ export default function CoursesPage() {
                     <div className="space-y-3 mb-6 bg-slate-50 rounded-xl p-4 border border-slate-100">
                       <div className="flex items-center text-sm text-slate-700">
                         <User className="w-4 h-4 text-slate-400 mr-3 shrink-0" />
-                        <span className="font-medium">{course.teacherName}</span>
+                        <span className="font-medium">{scheduleItem?.teacherName || 'Đang cập nhật'}</span>
                       </div>
                       <div className="flex items-center text-sm text-slate-700">
                         <Calendar className="w-4 h-4 text-slate-400 mr-3 shrink-0" />

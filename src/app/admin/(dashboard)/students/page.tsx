@@ -42,7 +42,6 @@ export default function StudentsPage() {
               <tr>
                 <th className="px-6 py-3 font-medium">Họ tên</th>
                 <th className="px-6 py-3 font-medium">Liên hệ</th>
-                <th className="px-6 py-3 font-medium">Khối</th>
                 <th className="px-6 py-3 font-medium">Phụ huynh</th>
                 <th className="px-6 py-3 font-medium">Trạng thái</th>
                 <th className="px-6 py-3 font-medium text-right">Hành động</th>
@@ -56,7 +55,6 @@ export default function StudentsPage() {
                     <div className="text-slate-900">{item.phone}</div>
                     <div className="text-xs text-slate-500">{item.email}</div>
                   </td>
-                  <td className="px-6 py-4 text-slate-600">{item.grade}</td>
                   <td className="px-6 py-4">
                     <div className="text-slate-900">{item.parentName}</div>
                     <div className="text-xs text-slate-500">{item.parentPhone}</div>

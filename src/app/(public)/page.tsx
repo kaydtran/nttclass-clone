@@ -227,8 +227,8 @@ export default function HomePage() {
             {teachers.map((teacher: any) => (
               <div key={teacher.id} className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-slate-100">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-slate-50 bg-slate-100">
-                  {teacher.avatar ? (
-                    <img src={teacher.avatar} alt={teacher.name} className="w-full h-full object-cover" />
+                  {teacher.avatarUrl ? (
+                    <img src={teacher.avatarUrl} alt={teacher.name} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-300">
                       <Users className="h-12 w-12" />

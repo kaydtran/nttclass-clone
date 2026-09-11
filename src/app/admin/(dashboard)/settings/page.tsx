@@ -33,8 +33,8 @@ export default function SettingsPage() {
               <label className="text-sm font-medium text-slate-700">Tên trung tâm</label>
               <input 
                 type="text" 
-                value={formData.centerName}
-                onChange={e => setFormData({...formData, centerName: e.target.value})}
+                value={formData.siteName}
+                onChange={e => setFormData({...formData, siteName: e.target.value})}
                 className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -73,8 +73,8 @@ export default function SettingsPage() {
               <label className="text-sm font-medium text-slate-700">Link Facebook</label>
               <input 
                 type="url" 
-                value={formData.facebookUrl}
-                onChange={e => setFormData({...formData, facebookUrl: e.target.value})}
+                value={formData.facebook}
+                onChange={e => setFormData({...formData, facebook: e.target.value})}
                 className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -83,8 +83,8 @@ export default function SettingsPage() {
               <label className="text-sm font-medium text-slate-700">Link Zalo</label>
               <input 
                 type="url" 
-                value={formData.zaloUrl}
-                onChange={e => setFormData({...formData, zaloUrl: e.target.value})}
+                value={formData.zalo}
+                onChange={e => setFormData({...formData, zalo: e.target.value})}
                 className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
