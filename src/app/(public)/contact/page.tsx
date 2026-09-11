@@ -187,7 +187,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-1">Địa chỉ</h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">{MOCK_SETTINGS.centerAddress}</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{MOCK_SETTINGS.address}</p>
                   </div>
                 </div>
 
@@ -197,7 +197,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-1">Điện thoại</h4>
-                    <p className="text-slate-600 text-sm">{MOCK_SETTINGS.centerPhone}</p>
+                    <p className="text-slate-600 text-sm">{MOCK_SETTINGS.phone}</p>
                   </div>
                 </div>
 
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-1">Email</h4>
-                    <p className="text-slate-600 text-sm">{MOCK_SETTINGS.centerEmail}</p>
+                    <p className="text-slate-600 text-sm">{MOCK_SETTINGS.email}</p>
                   </div>
                 </div>
 
