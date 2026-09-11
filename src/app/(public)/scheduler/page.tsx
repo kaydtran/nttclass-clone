@@ -134,7 +134,7 @@ export default function SchedulerPage() {
             >
               <option value="all">Tất cả giáo viên</option>
               {MOCK_TEACHERS.map(t => (
-                <option key={t.id} value={t.name}>{t.name}</option>
+                <option key={t.id} value={t.id}>{t.name}</option>
               ))}
             </select>
           </div>
@@ -213,7 +213,7 @@ export default function SchedulerPage() {
 
                 {/* Day Columns */}
                 {weekDates.map((date, dayIndex) => {
-                  const daySchedule = getScheduleForDay(filteredSchedule, DAYS_MONDAY_START[dayIndex]);
+                  const daySchedule = getScheduleForDay(filteredSchedule, dayIndex + 1);
                   
                   return (
                     <div 
