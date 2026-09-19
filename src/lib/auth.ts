@@ -27,10 +27,10 @@ export function getSession(): AuthSession | null {
   }
 }
 
-export function setSession(username: string): void {
+export function setSession(data: { user: { username: string; role: string }; token: string }): void {
   const session: AuthSession = {
     isAuthenticated: true,
-    username,
+    username: data.user.username,
     loginTime: Date.now(),
   };
   localStorage.setItem(AUTH_KEY, JSON.stringify(session));

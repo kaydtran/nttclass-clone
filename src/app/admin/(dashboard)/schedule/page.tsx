@@ -3,15 +3,14 @@
 import { useState } from 'react';
 import { Plus, Edit, Trash2, Search, X } from 'lucide-react';
 import { MOCK_SCHEDULE } from '@/lib/constants';
-import { DAYS_OF_WEEK } from '@/types';
-import { ScheduleItem } from '@/types';
+import { DAYS_OF_WEEK, ScheduleItem } from '@/types';
 
 export default function SchedulePage() {
   const [schedules, setSchedules] = useState<ScheduleItem[]>(MOCK_SCHEDULE);
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  
+
   const [formData, setFormData] = useState<Partial<ScheduleItem>>({
     classId: '',
     teacherId: '',
@@ -21,13 +20,13 @@ export default function SchedulePage() {
     room: 'Phòng 1'
   });
 
-  const filtered = schedules.filter(s => 
-    s.classId.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    s.teacherId.toLowerCase().includes(searchTerm.toLowerCase())
+  const filtered = schedules.filter(s =>
+    s.className.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    s.teacherName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleDelete = (id: string) => {
-    if(confirm('Bạn có chắc chắn muốn xóa lịch này?')) {
+    if (confirm('Bạn có chắc chắn muốn xóa lịch này?')) {
       setSchedules(prev => prev.filter(s => s.id !== id));
     }
   };
@@ -74,9 +73,9 @@ export default function SchedulePage() {
         <div className="p-4 border-b border-slate-100">
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-            <input 
-              type="text" 
-              placeholder="Tìm kiếm theo lớp, giáo viên..." 
+            <input
+              type="text"
+              placeholder="Tìm kiếm theo lớp, giáo viên..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -99,9 +98,9 @@ export default function SchedulePage() {
             <tbody className="divide-y divide-slate-100">
               {filtered.map(item => (
                 <tr key={item.id} className="hover:bg-slate-50/50 transition-colors group">
-                  <td className="px-6 py-4 font-medium text-slate-900">{item.classId}</td>
-                  <td className="px-6 py-4 text-slate-600">{item.teacherId}</td>
-                  <td className="px-6 py-4 text-slate-600">{DAYS_OF_WEEK[item.dayOfWeek]}</td>
+                  <td className="px-6 py-4 font-medium text-slate-900">{item.className}</td>
+                  <td className="px-6 py-4 text-slate-600">{item.teacherName}</td>
+                  <td className="px-6 py-4 text-slate-600">{DAYS_OF_WEEK[item.dayOfWeek] || ''}</td>
                   <td className="px-6 py-4 text-slate-600">{item.startTime} - {item.endTime}</td>
                   <td className="px-6 py-4 text-slate-600">{item.room}</td>
                   <td className="px-6 py-4 text-right">
@@ -126,7 +125,6 @@ export default function SchedulePage() {
         </div>
       </div>
 
-      {/* Modal Form */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
@@ -139,64 +137,64 @@ export default function SchedulePage() {
             <div className="p-4 space-y-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Lớp học</label>
-                <input 
-                  type="text" 
-                  value={formData.classId || ''} 
-                  onChange={e => setFormData({...formData, classId: e.target.value})}
-                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="ID Lớp" 
+                <input
+                  type="text"
+                  value={formData.classId || ''}
+                  onChange={e => setFormData({ ...formData, classId: e.target.value })}
+                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="ID Lớp"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Giáo viên</label>
-                <input 
-                  type="text" 
-                  value={formData.teacherId || ''} 
-                  onChange={e => setFormData({...formData, teacherId: e.target.value})}
-                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="ID Giáo viên" 
+                <input
+                  type="text"
+                  value={formData.teacherId || ''}
+                  onChange={e => setFormData({ ...formData, teacherId: e.target.value })}
+                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="ID Giáo viên"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Thứ</label>
-                <select 
-                  value={formData.dayOfWeek || 1} 
-                  onChange={e => setFormData({...formData, dayOfWeek: parseInt(e.target.value)})}
+                <select
+                  value={formData.dayOfWeek || 1}
+                  onChange={e => setFormData({ ...formData, dayOfWeek: parseInt(e.target.value) })}
                   className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  {Object.entries(DAYS_OF_WEEK).map(([key, value]) => (
-                    <option key={key} value={key}>{value}</option>
+                  {DAYS_OF_WEEK.map((day, idx) => (
+                    <option key={idx} value={idx}>{day}</option>
                   ))}
                 </select>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-slate-700">Giờ bắt đầu</label>
-                  <input 
-                    type="time" 
-                    value={formData.startTime || ''} 
-                    onChange={e => setFormData({...formData, startTime: e.target.value})}
-                    className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                  <input
+                    type="time"
+                    value={formData.startTime || ''}
+                    onChange={e => setFormData({ ...formData, startTime: e.target.value })}
+                    className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-slate-700">Giờ kết thúc</label>
-                  <input 
-                    type="time" 
-                    value={formData.endTime || ''} 
-                    onChange={e => setFormData({...formData, endTime: e.target.value})}
-                    className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                  <input
+                    type="time"
+                    value={formData.endTime || ''}
+                    onChange={e => setFormData({ ...formData, endTime: e.target.value })}
+                    className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Phòng</label>
-                <input 
-                  type="text" 
-                  value={formData.room || ''} 
-                  onChange={e => setFormData({...formData, room: e.target.value})}
-                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="Phòng học" 
+                <input
+                  type="text"
+                  value={formData.room || ''}
+                  onChange={e => setFormData({ ...formData, room: e.target.value })}
+                  className="w-full p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Phòng học"
                 />
               </div>
             </div>
